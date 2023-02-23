@@ -17,10 +17,10 @@ class Main {
         int num1;
         int num2;
         String oper;
-        String[] operands = expression.split("[+\\-*/]");
+        String[] operands = expression.split(" ");
         boolean isRoman;
         String result;
-        if (operands.length != 2) {
+        if (operands.length != 3) {
             throw new Exception("формат математической операции не удовлетворяет заданию - два операнда и один оператор");
         }
 
@@ -28,13 +28,13 @@ class Main {
         if (oper == null) {
             throw new Exception("Неподдерживаемая математическая операция");
         }
-        if (Roman.isRoman(operands[0]) && Roman.isRoman(operands[1])) {
+        if (Roman.isRoman(operands[0]) && Roman.isRoman(operands[2])) {
             num1 = Roman.convertToArabian(operands[0]);
-            num2 = Roman.convertToArabian(operands[1]);
+            num2 = Roman.convertToArabian(operands[2]);
             isRoman = true;
-        } else if (!Roman.isRoman(operands[0]) && !Roman.isRoman(operands[1])) {
+        } else if (!Roman.isRoman(operands[0]) && !Roman.isRoman(operands[2])) {
             num1 = Integer.parseInt(operands[0]);
-            num2 = Integer.parseInt(operands[1]);
+            num2 = Integer.parseInt(operands[2]);
             isRoman = false;
         } else {
             throw new Exception("Числа должны быть в одном формате");
